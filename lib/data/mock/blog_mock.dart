@@ -1,4 +1,5 @@
 import 'package:biblog/models/blog.dart';
+import 'dart:math';
 
 List<Blog> getBlogMock() {
   final List<String> titles = [
@@ -56,11 +57,10 @@ List<Blog> getBlogMock() {
     'Nullam venenatis efficitur nisl ac aliquam. Mauris nibh risus, iaculis eget viverra et, placerat et sapien. Etiam mollis leo sed cursus hendrerit. Cras interdum lorem at nulla pellentesque egestas. Donec enim quam, vulputate sit amet ante ac, semper sagittis arcu. Ut quis mauris a ex consequat finibus. Aliquam dignissim placerat sapien sed lacinia. Sed consectetur mollis lacus, in aliquam tortor ultrices ut.'
   ];
 
-  final length = titles.length < bodies.length ? titles.length : bodies.length;
   final List<Blog> blogMock = [];
   final DateTime dateTimeNow = DateTime.now();
 
-  for (int i = 0; i < length; i++) {
+  for (int i = 0; i < min(titles.length, bodies.length); i++) {
     blogMock.add(
       Blog(
         id: i,
